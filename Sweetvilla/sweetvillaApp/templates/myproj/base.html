@@ -14,8 +14,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href='{% static "css/home.css" %}'>
     <script src="https://kit.fontawesome.com/6aa5d0a737.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href='{% static "css/home.css" %}'>
     <title>{% block title_block %} {%endblock%}</title>
 
 
@@ -23,30 +23,29 @@
 </head>
 
 <body>
-
     <nav class=" navbar navbar-expand-lg navbar-dark bg-primary fixed-top ">
         <div class="container-fluid">
-            <a class="navbar-brand " href="# "> Sakshi's Blog</a>
+            <a class="navbar-brand " href="# ">SweetVilla.Com</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active" aria-current="page">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Features</a>
+                        <a class="nav-link" href=" /aboutus">About Us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">About Us</a>
+                        <a class="nav-link" href="tracker">Tracker</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Products List
                 </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item " href="internationalsweet/">International Sweet</a></li>
+                            <li><a class="dropdown-item " href="{%internationalsweet/">International Sweet</a></li>
                             <li><a class="dropdown-item " href="indiansweet/">Indian Sweets</a></li>
                             <li><a class="dropdown-item " href="cake/">Cakes</a></li>
                             <li><a class="dropdown-item " href="icecream/">Ice-Cream</a></li>
@@ -60,27 +59,47 @@
                         </ul>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link " href="# ">Contact Us</a>
+                        <a class="nav-link " href="/contactUs">Contact Us</a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link " href="# ">Feadback</a>
+                        <a class="nav-link " href="/feadback ">Feedback</a>
                     </li>
                     <div id='login'>
-                        <a href="#"><i class="fa-solid fa-user-plus"></i><span>Signup</span></a>
-                        <a href="#"><i class="fa-solid fa-arrow-right-to-bracket"></i><span>Login</a></span>
-                        <a href="#"><i class="fa-solid fa-arrow-right-from-bracket"></i><span>Logout</span></a>
-                        <div class="carts">
-                            <a href="#">
-                                <p id="cart">0</p><i class="fa-solid fa-cart-arrow-down cartitem"></i>
-                            </a>
-                        </div>
+                        <a href="{% url 'signup/' %}"><i class="fa-solid fa-user-plus"></i><span>Signup</span></a>
+                        <a href="/accounts/login/"><i class="fa-solid fa-arrow-right-to-bracket"></i><span>Login</span></a>
+                        <a href="/accounts/logout/"><i class="fa-solid fa-arrow-right-from-bracket"></i><span>Logout</span></a>
                     </div>
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                    <button id="popcart" type="button" class="btn btn-secondary mx-2" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-html="true">
+                        Cart
+                        (<span id="cart" class="ct">0</span>)
+                      </button>
 
             </div>
         </div>
 
     </nav>
+    <div class="container text-center " id="head">
+        <div class="row row-cols-4">
+            <div class="col">
+                <h1> Sweetvilla.Com</h1>
+            </div>
 
+            <div class="col-6">
+                <a href="https://www.instagram.com/manugupta.786/" target="_blank"><i class="fa-brands fa-instagram fa-2xl"></i></a>
+                <a href="https://facebook.com/manoj.guptamanu.90" target="_blank"><i class="fa-brands fa-square-facebook fa-2xl"></i></a>
+                <a href="https://youtube.com/channel/UCBgqpo4FVDUIExos-ga-KQ" target="_blank"><i class="fa-brands fa-youtube fa-2xl"></i></a>
+                <a href="https://www.linkedin.com/in/manoj-gupta-7858971b6" target="_blank"><i class="fa-brands fa-linkedin fa-2xl"></i></a>
+                <a href="https://github.com/manojgupta143" target="_blank"><i class="fa-brands fa-square-github fa-2xl"></i></a>
+            </div>
+        </div>
+        <div class="col">
+            <p> Developed By Manoj Gupta</p>
+        </div>
+    </div>
     {% block body_block %} {%endblock%}
     <footer>
         <div class="sponcer">
@@ -137,10 +156,12 @@
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     <script src="{%static 'js/main.js'%}"></script>
+    {% block script_block %} {%endblock%}
 </body>
 
 

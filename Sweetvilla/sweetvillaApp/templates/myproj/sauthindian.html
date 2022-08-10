@@ -25,12 +25,14 @@
                     <div class="card" style="width: 18rem;">
                         <img src='/media/{{i.images}}' class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">{{i.prodname|title}}</h5>
+                            <h5 class="card-title" id="namepr{{i.id}}">{{i.prodname|title}}</h5>
                             <p class="card-text">{{i.desc|truncatewords:10|title|linebreaks}}</p>
                             <p class="card-price">{{i.price}}</p>
                             <div class="btn2">
-                                <button type="button" class="btn btn-primary">Order Now</button>
-                                <button type="button" class="btn btn-danger cart">Add to Cart</button>
+                                <a href="{{i.get_absolute_url}}"> <button type="button" id="qv{{i.id}}" class="btn btn-primary">Order Now</button></a>
+                                <span id="divpr{{i.id}}" class="divpr">
+                                    <button id="pr{{i.id}}" class="btn btn-danger cart">Add To Cart</button>
+                                </span>
                             </div>
                         </div>
                     </div>

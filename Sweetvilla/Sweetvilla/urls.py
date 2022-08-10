@@ -13,6 +13,12 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
+
+
+
+
+
 from django.contrib import admin
 from django.urls import path,include
 from sweetvillaApp import views
@@ -20,14 +26,15 @@ from django.conf import settings
 from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('accounts/',include('django.contrib.auth.urls'),name='login'), 
     path('',views.home,name='home'),
     path('aboutus/',views.about,name='AboutUs'),
     path('contactUs/',views.contact,name='ContactUs'),
     path('tracker/',views.tracker,name='tracker'),
     path('search/',views.search,name='search'),
-    path('productView/',views.product,name='ProductView'),
+    path('products/<int:id>/',views.productView,name='ProductView'),
     path('checkout/',views.checkout,name='CheckOut'),
-    path('feadback/',views.feadbaack,name='Feadback'),
+    path('feadback/',views.feedback,name='Feedback'),
     path('indiansweet/',views.indianSweet),
     path('punjabisweet/',views.punjabiSweet),
     path('internationalsweet/',views.internationalsweet),
@@ -36,6 +43,8 @@ urlpatterns = [
     path('cake/',views.cake),
     path('icecream/',views.icecream),
     path('gujratisweet/',views.gujratisweet),
+    path('signup/',views.signup_form,name='signup/'), 
+    path('logout/', views.logout_view)
 
 
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
