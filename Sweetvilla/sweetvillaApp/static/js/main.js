@@ -2,7 +2,6 @@ if (localStorage.getItem('cart') == null) {
     var cart = {};
 } else {
     cart = JSON.parse(localStorage.getItem('cart'));
-    document.getElementById('cart').innerHTML = Object.keys(cart).length;
     updateCart(cart)
 };
 $('.divpr').on('click', 'button.cart', function() {
