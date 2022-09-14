@@ -514,3 +514,28 @@
        text-decoration: underline;
        color: #2b1919;
    }
+   
+   #feedback h5 {
+       color: green;
+       font-weight: bold;
+       font-size: 2rem;
+   }
+   
+   #feedback span {
+       color: rgb(128, 0, 0);
+       font-weight: red;
+       font-size: 2rem;
+   }
+   
+   .cb {
+       padding-left: 20px;
+       padding-top: 5px;
+       padding-bottom: 5px;
+       width: 100%;
+       border: 2px solid rgb(247, 224, 224);
+       color: #3b262a;
+       border-radius: 12px;
+       background-color: rgb(250, 247, 247);
+       font-weight: bold;
+       position: relative;
+   }

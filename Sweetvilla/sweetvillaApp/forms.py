@@ -12,4 +12,14 @@ class SignupForm(ModelForm):
         'first_name':forms.TextInput(attrs={'class':'form-control','placeholder':'Enter First Name'}),
         'last_name':forms.TextInput(attrs={'class':'form-control','placeholder':'Enter Last Name'})
         }
+from.models import Feadback
+class feedbackform(ModelForm):
+    class Meta:
+        model=Feadback
+        fields=('__all__')
+        labels={'name':' Enter your Name','email':'Enter Email','body':'Enter Your Valuable Feedback'}
+        widgets={'name':forms.TextInput(attrs={'class':'form-control','placeholder':'Enter Your User Name'}),
+        'email':forms.EmailInput(attrs={'class':'form-control','placeholder':'Enter Your Email'}),
+        'body':forms.Textarea(attrs={'class':'form-control','placeholder':'Enter Your Feedback Here'}),
+        }
         

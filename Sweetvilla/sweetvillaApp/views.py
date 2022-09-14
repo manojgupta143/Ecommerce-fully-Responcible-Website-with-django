@@ -1,8 +1,8 @@
 from math import ceil
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
-from django.http import HttpResponse
-
+from.models import Order
+from sweetvillaApp.forms import feedbackform
 
 from sweetvillaApp .models import Product,Contact
 def home(request):
@@ -28,6 +28,7 @@ def contact(request):
         desc=request.POST.get('desc', '')
         contact =Contact(name=name, email=email, phone=phone, detail=desc)
         contact.save()
+        return HttpResponseRedirect(request,'myroj/contacttq.html')
     return render(request,'myproj/contactus.html')
 @login_required
 def tracker(request):
@@ -40,8 +41,19 @@ def productView(request, id):
     return render(request, "myproj/prodView.html",{'product':product})
 def checkout(request):
     return render(request,'myproj/checkout.html')
-def feedback(request):
-    return render(request,'myproj/feedback.html')
+from.models import Feadback
+def feedback(request): 
+    comments=Feadback.objects.filter(active=True) 
+    csubmit=False 
+    if request.method=='POST': 
+        form=feedbackform(data=request.POST) 
+        if form.is_valid(): 
+            new_comment=form.save(commit=False) 
+            new_comment.save() 
+            csubmit=True 
+    else:
+        form=feedbackform() 
+    return render(request,'myproj/feedback.html',{'comments':comments,'csubmit':csubmit,'form':form}) 
 @login_required
 def indianSweet(request):
     products= Product.objects.filter(cetegory='indianSweet')
@@ -114,9 +126,27 @@ def signup_form(request):
 def logout_view(request): 
     return render(request,'myproj/logout.html') 
 
+#order View
+@login_required
+def checkout(request):
+    if request.method=="POST":
+        items_json= request.POST.get('itemsJson', '')
+        name=request.POST.get('name', '')
+        email=request.POST.get('email', '')
+        address=request.POST.get('address1', '') + " " + request.POST.get('address2', '')
+        city=request.POST.get('city', '')
+        state=request.POST.get('state', '')
+        zip_code=request.POST.get('zip_code', '')
+        phone=request.POST.get('phone', '')
+        order = Order(items_json= items_json, name=name, email=email, address= address, city=city, state=state, zip_code=zip_code, phone=phone)
+        print(order)
+        order.save()
+        thank=True
+        id=order.order_id
+        return render(request, 'myproj/checkout.html', {'thank':thank, 'id':id})
+    return render(request, 'mypro/checkout.html')
 
-
-
+#feadbck form
 
 # Create your views here.
 
